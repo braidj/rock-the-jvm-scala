@@ -2,61 +2,41 @@ package part1basics
 
 object Functions extends App {
 
-  //println("Whoop whoop")
-  def aFunction(a: String,b: Int): String = {
-    a + " " + b
-  }
-
-  //println(aFunction ("god", 20))
-
   // simple unit function / side effect
-  def greeter(name: String, age: Int) = println(s"Hello, my name is ${name}, I am ${age} ")
+  def greeter(name: String, age: Int) = "Hello, my name is " + name +" , I am " + age + "years old"
+  println(greeter("Jace",52))
 
   // factorial function 4 * 3 * 2 * 1
   def calcFact(n: Int): Int = {
-
-    def loop(remaining: Int) : Int = {
-
-      if (remaining == 1) 1
-      else {
-        remaining * loop(remaining-1)
-      }
-    }
-    loop(n)
+    if (n <= 1) 1
+    else
+      n * calcFact(n -1)
   }
+  println(calcFact(5))
+  println(calcFact(6))
+  println(calcFact(7))
 
   // Fibonacci sequence function f(n) = f(n -1) + f(n -2)
   // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
   def calcFib(nth: Int) : Int = {
-
-      def loop(first: Int, second: Int, times: Int): Int = {
-
-       if (times == nth) {
-           first + second
-        }
-        else {
-          loop(second,first + second,times + 1)
-        }
-
-    }
-    loop(0,1,0)
+    if (nth <= 2) 1
+    else
+      calcFib(nth-1) + calcFib(nth-2)
   }
 
+  //Test if a number is prime: can only be divided by itself and 1 only
+  def CheckIfPrime(nosToCheck: Int): Boolean = {
 
-  //Test if a number is prime: can be divided by itself and 1 only
+    def primeUntil(t: Int): Boolean =
 
-  //greeter("David",12)
-  //println(calcFact(7))
+      if (t <= 1) true
+      else nosToCheck % t != 0 && primeUntil(t - 1) //don't fully understand this
 
-  println(calcFib(1))
-  println(calcFib(2))
-  println(calcFib(3))
-  println(calcFib(4))
-  println(calcFib(5))
-  println(calcFib(6))
-  println(calcFib(7))
-  println(calcFib(8))
-  println(calcFib(9))
-  println(calcFib(10))
+    primeUntil(nosToCheck / 2)
+  }
+
+  println(CheckIfPrime(2))
+  println(CheckIfPrime(3))
+  println(CheckIfPrime(47*2))
 
 }
