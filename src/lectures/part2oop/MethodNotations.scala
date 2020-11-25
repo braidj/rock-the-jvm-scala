@@ -60,7 +60,6 @@ object MethodNotations extends App {
   // 3. Add a "learns" method in person class => MAry learns 'Scala'
   // then add a learnsScala method, calls above with Scala. Use it in postfix notation
   println(mary.learns("Cross stick knitting"))
-  println(mary.learnsScala())
   println(mary learnsScala)
 
   // 4. Overload the apply method
