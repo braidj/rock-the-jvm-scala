@@ -1,6 +1,6 @@
 package lectures.part2oop
 
-object InheritanceAndTraits extends App{
+object Inheritance extends App{
 
   // Single class inheritance
   class Animal {
@@ -46,5 +46,22 @@ object InheritanceAndTraits extends App{
 
   val robotdog = new AnotherDog
   println(robotdog.creatureType)
+
+  // a method call will always go to the most overridden version where possible
+  // type substitution (broad polymorphism)
+  val unknownAnimal: Animal  = new AnotherDog()
+
+  // be clear on diff between overRIDING and overLOADING (diff signatures of  methods in the same class)
+
+  // Super: used when you want to reference a method or field from a parent class
+  // so even if the method / value is overriden you cans style refer to the implementation in parent calss
+  // e.g super.eat
+
+  // preventing overrides
+  // 1. use final on member
+  // 2. use final on entire class
+  // 3. use seal the class = extends class in this FILE, but prevents extension in other files
+
+
 
 }
